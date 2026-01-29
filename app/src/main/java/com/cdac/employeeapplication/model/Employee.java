@@ -11,9 +11,9 @@ public class Employee {
 private Integer id;
 private String name;
 private String role;
-private BigDecimal salary;
+private double salary;
 
-    public Employee(String name, String role, BigDecimal salary) {
+    public Employee(String name, String role, double salary) {
         this.name = name;
         this.role = role;
         this.salary = salary;
@@ -43,11 +43,11 @@ private BigDecimal salary;
         this.role = role;
     }
 
-    public BigDecimal getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(BigDecimal salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 }
