@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.cdac.employeeapplication.model.Employee;
 import com.cdac.employeeapplication.model.EmployeeViewModel;
+import com.cdac.employeeapplication.model.ListFragmentEmployee;
 
 import java.math.BigDecimal;
 
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         salaryInput=findViewById(R.id.salaryInput);
         employeeViewModel=new ViewModelProvider(this).get(EmployeeViewModel.class);
         add=findViewById(R.id.addButton);
-        employeedetails=findViewById(R.id.employeedetails);
+     //   employeedetails=findViewById(R.id.employeedetails);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,9 +59,18 @@ public class MainActivity extends AppCompatActivity {
                 if (!name.isEmpty()) {
                     employeeViewModel.insert(new Employee(name, role,salary));
                     Toast.makeText(MainActivity.this, "Employee added!", Toast.LENGTH_SHORT).show();
+
+                    // Limpiar los campos de entrada
+                    nameInput.setText("");
+                    roleInput.setText("");
+                    salaryInput.setText("");
+
+                    // mover el foco al primer campo
+                    nameInput.requestFocus();
+
                 }          }
         });
-        employeeViewModel.getAllEmployees().observe(this, employees->{
+       /* employeeViewModel.getAllEmployees().observe(this, employees->{
                     String data=employeedetails.getText().toString();
                     StringBuffer sb=new StringBuffer(data);
             employeedetails.setText("");
@@ -69,8 +79,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                     employeedetails.setText(sb);
                 }
-        );
-
+        );*/
+    //Carga del Fragment.
+        if (savedInstanceState == null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, new ListFragmentEmployee())
+                    .commit();
+        }
 
 
 

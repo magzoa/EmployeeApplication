@@ -44,17 +44,12 @@
         android:layout_height="wrap_content"
         android:text="Add Employee" />
 
-    <TextView
-        android:id="@+id/employeedetails"
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text="Employee Details Here"
-        android:textStyle="bold|italic"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:padding="10dp"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
 
 </LinearLayout>
